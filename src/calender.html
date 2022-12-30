@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALENDER</title>
+    <style>
+        #month {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <table border="1px" cellpadding="10px" style="font-family:cursive">
+        <tr><th colspan="7">
+            <div id="month">
+                <button><</button>
+                <div id="month-name"></div>
+                <button>></button>
+            </div>
+        </th></tr>
+        <tr>
+            <th>SUN</th>
+            <th>MON</th>
+            <th>TUE</th>
+            <th>WED</th>
+            <th>THU</th>
+            <th>FRI</th>
+            <th>SAT</th>
+        </tr>
+        <tr>
+            <td onClick="success(event)">1
+            <td onClick="success(event)">2
+            <td onClick="success(event)">3
+            <td onClick="success(event)">4
+            <td onClick="success(event)">5
+            <td onClick="success(event)">6
+            <td onClick="success(event)">7
+        <tr>
+            <td onClick="success(event)">8
+            <td onClick="success(event)">9
+            <td onClick="success(event)">10
+            <td onClick="success(event)">11
+            <td onClick="success(event)">12
+            <td onClick="success(event)">13
+            <td onClick="success(event)">14
+        <tr>
+            <td onClick="success(event)">15
+            <td onClick="success(event)">16
+            <td onClick="success(event)">17
+            <td onClick="success(event)">18
+            <td onClick="success(event)">19
+            <td onClick="success(event)">20
+            <td onClick="success(event)">21
+        <tr>
+            <td onClick="success(event)">22
+            <td onClick="success(event)">23
+            <td onClick="success(event)">24
+            <td onClick="success(event)">25
+            <td onClick="success(event)">26
+            <td onClick="success(event)">27
+            <td onClick="success(event)">28
+        <tr>
+            <td onClick="success(event)">29
+            <td onClick="success(event)">30
+            <td onClick="success(event)">31
+            <td>
+            <td>
+            <td>
+            <td>
+    </table>
+    <script>
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+        var d = new Date()
+        document.getElementById("month-name").innerHTML = monthNames[d.getMonth()].toUpperCase()
+        d = d.getDate()
+        
+        const success = event => {
+            event.target.style.backgroundColor = "#77dd77";
+        }
+        
+    </script>
+</body>
+</html>

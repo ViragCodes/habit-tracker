@@ -1,0 +1,43 @@
+.container {
+  width: 150px;
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.d-month {
+  padding: 0 10% 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav {
+  cursor: pointer;
+}
+
+.d-cal {
+  width: 100%;
+  display: flex;
+  aspect-ratio: 1/1;
+}
+
+.col {
+  width: 20%;
+  height: max-content;
+}
+
+.box {
+  border: .25vh solid;
+  margin: 1px;
+  aspect-ratio: 1/1;
+  line-height: 200%;
+  border-radius: 7px;
+  font-size: 70%;
+  text-align: center;
+}
+
+.box-filled {
+  color: azure;
+  border-color: transparent;
+}
+

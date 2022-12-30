@@ -1,0 +1,105 @@
+:root {
+    --scheme : azure;
+}
+
+body {
+    margin: 0;
+    background-color:rgba(0, 0, 0, 0.96)
+}
+
+.header-wrapper {
+    background-color: rgb(1, 32, 35);
+    color: azure;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#form {
+    display : none
+}
+
+.button {
+    height: 100%;
+    padding: 12px 15px;
+    font-family:monospace;
+    font-size: large;
+    background-color:rgb(255, 230, 0);
+    border: 0;
+    border-radius: 10px;
+}
+
+
+.form-wrapper{
+    border: 3px solid azure;
+    margin: 5% 10%;
+    padding: 3%;
+    color: var(--scheme);
+    font-family:monospace;
+    font-size: 1.3rem;
+}
+
+input {
+    padding: 0.9%;
+    border-radius: 7px;
+    border: 0;
+}
+input:focus{
+    outline: 0;
+}
+
+.form-wrapper .button {
+    padding: 9px 20px;
+    background-color: var(--scheme);
+}
+
+.form-wrapper:hover {
+    background-color:rgb(18, 18, 18);
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: azure;
+    cursor:pointer;
+}
+
+input, label{
+    margin: 2%; 
+}
+
+span {
+    float: right;
+    display: flex;
+    align-items: center;
+}
+
+.footer {
+    color: rgb(170, 170, 170);
+    font-style: italic;
+    margin: 3%;
+    font-size: large;
+}
+
+#open {
+    display: none;
+    color: azure;
+    margin-top: 2%;
+    font-size: 0.9em;
+}
+
+#delete {
+    flex-grow: 1;
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color :rgb(225, 38, 38);
+    cursor: pointer;
+}
+
+  
+
+
