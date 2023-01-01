@@ -8,15 +8,21 @@ import Quote from './components/Quote'
 
 function App() {
 
+  const [habbits, setHabbits] = useState(JSON.parse(localStorage.getItem("habbits")) || [])
+  const [ci, setCI] = useState(localStorage.getItem("colorid") || 0)
+  const [isEmpty, setIsEmpty] = useState(habbits.length === 0)
+
+  useEffect(() => {
+    setIsEmpty(habbits.length === 0)
+    if (habbits.length === 0) setCI(0)
+    localStorage.setItem("habbits", JSON.stringify(habbits))
+  },[habbits])
+  
   const toggleform = useCallback(() => {
     const form = document.getElementById("form")
     form.style.display = form.style.display === "block" ? "none" : "block" 
   }, [])
 
-  const [habbits, setHabbits] = useState(JSON.parse(localStorage.getItem("habbits")) || [])
-  const [ci, setCI] = useState(JSON.parse(localStorage.getItem("colorid")) || 0)
-  const [isEmpty, setIsEmpty] = useState(habbits.length === 0)
-  
   const addHabbit = habbit => {
     setHabbits(prevArr => [...prevArr, habbit])
     setCI(prevCI => (prevCI + 1) % 6)
@@ -33,12 +39,6 @@ function App() {
       days: habbit.days,
     } : h))
   }, [])
-
-  useEffect(() => {
-    setIsEmpty(habbits.length === 0)
-    if (habbits.length === 0) setCI(0)
-    localStorage.setItem("habbits", JSON.stringify(habbits))
-  },[habbits])
 
   return (
     <div className="App">

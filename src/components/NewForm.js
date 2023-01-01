@@ -1,7 +1,6 @@
 import {CloseOutlined} from '@ant-design/icons'
 
-const colors = ['#FF6D6A','#ffe27a', '#6bf56b', '#62e0f3', '#fa8f8f', '#cb52ff']
-const getColor = index => colors[index]
+const colors = ['#ff6d6a','#ffe27a', '#6bf56b', '#62e0f3', '#fa8f8f', '#cb52ff']
 
 function NewForm({ index, add, toggleform }) {
   const handleSubmit = event => {
@@ -14,24 +13,25 @@ function NewForm({ index, add, toggleform }) {
         name : hname.join(' '), 
         date : new Date(), 
         count : 0, 
-        color : getColor(index),
+        color : colors[index],
         peak : 0,
         prevPeak : 0,
         days : []
       }
       event.target[0].value = ""
-      add(habbit)
       toggleform()
+      add(habbit)
     }
   }
   return (
-    <div className="form-wrapper" style={{'--scheme' : getColor(index)}}>
+    <div className="form-wrapper" style={{'--scheme': colors[index]}}>
         <form onSubmit={handleSubmit}>
             <label>
                 Habit Name <span id="delete"><CloseOutlined onClick={toggleform}/></span><br />
                 <input autoComplete="off" type="text"/>
             </label>
             <input type="submit" value="ADD" className="button"/>
+            <br />
         </form> 
     </div>
   )

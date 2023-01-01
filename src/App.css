@@ -19,7 +19,8 @@ body {
 }
 
 #form {
-    display : none
+    display : none;
+    background : rgba(18, 18, 18)
 }
 
 .button {
@@ -32,17 +33,20 @@ body {
     border-radius: 10px;
 }
 
-
 .form-wrapper{
     border: 3px solid azure;
     margin: 5% 10%;
-    padding: 3%;
+    padding: 3% 3% 1.75%;
     color: var(--scheme);
     font-family:monospace;
     font-size: 1.3rem;
 }
 
+label{
+    margin: 2%; 
+}
 input {
+    margin: 2%; 
     padding: 0.9%;
     border-radius: 7px;
     border: 0;
@@ -56,18 +60,9 @@ input:focus{
     background-color: var(--scheme);
 }
 
-.form-wrapper:hover {
-    background-color:rgb(18, 18, 18);
-    cursor: pointer;
-}
-
 .button:hover {
     background-color: azure;
     cursor:pointer;
-}
-
-input, label{
-    margin: 2%; 
 }
 
 span {
@@ -76,18 +71,21 @@ span {
     align-items: center;
 }
 
-.footer {
-    color: rgb(170, 170, 170);
-    font-style: italic;
-    margin: 3%;
-    font-size: large;
-}
-
 #open {
     display: none;
     color: azure;
-    margin-top: 2%;
+    margin-top: 3%;
     font-size: 0.9em;
+}
+
+#details {
+    align-self: center;
+    margin: 0 3%;
+}
+
+.detail {
+    align-self: center;
+    margin : 10px 0;
 }
 
 #delete {
@@ -98,6 +96,47 @@ span {
     justify-content: flex-end;
     color :rgb(225, 38, 38);
     cursor: pointer;
+    margin-bottom: 0;
+}
+
+#show {
+    margin-top: 20px;
+    opacity: 0.7;
+    font-size: 0.75em;
+    text-decoration: underline;
+    cursor: pointer;
+    font-style: italic;
+    text-align: center;
+}
+
+#show:hover{
+    opacity: 1;
+}
+
+.footer {
+    color: rgb(170, 170, 170);
+    font-style: italic;
+    margin: 3%;
+    font-size: large;
+}
+
+@media (max-width: 512px){
+    #open {
+        margin: 5% 0 2%;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .header-wrapper {
+        padding: 20px;
+        flex-direction: column;
+    }
+    #show:hover{
+        opacity: 0.7;
+    }
+    .button:hover {
+        background-color: rgb(255, 230, 0);
+    }
 }
 
   

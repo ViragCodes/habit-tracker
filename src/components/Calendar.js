@@ -4,8 +4,11 @@ import "./Calendar.css";
 function Calendar({theme, dates}) {
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     
-    const data = useRef({})
+    const date = new Date()
+    const [m, setM] = useState(date.getMonth())
+    const [y, setY] = useState(date.getFullYear())
 
+    const data = useRef({})
     useEffect(() => {
         var obj = {}
         dates.forEach(date => {
@@ -17,9 +20,6 @@ function Calendar({theme, dates}) {
         data.current = obj
     })
 
-    const date = new Date()
-    const [m, setM] = useState(date.getMonth())
-    const [y, setY] = useState(date.getFullYear())
     const last = new Date(date.getFullYear(), m + 1, 0)
 
     const right = (e) => {
@@ -27,7 +27,6 @@ function Calendar({theme, dates}) {
         m === 11 && setY(prev => prev + 1)
         setM(prev => (prev+1)%12)
     }
-
     const left = (e) => {
         e.stopPropagation()
         m === 0 && setY(prev => prev - 1)

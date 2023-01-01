@@ -4,14 +4,11 @@ import Calendar from './Calendar'
 
 function Habbit({habbit, del, set}) {
   const date = new Date()
-
   const [count, setCount] = useState(() => {
     if (habbit.count === 0) return 0
     const last = new Date(habbit.days.slice(-1))
-    const total = new Date(last.getFullYear(), last.getMonth()+1, 0).getDate()
-    const base = last.getDate() + 1 === total ? 32 : total
-    if (date.getDate() > (last.getDate() + 1) % base) {
-      console.log((last.getDate() + 1))
+    const next = new Date(last.getFullYear(), last.getMonth(), last.getDate() + 1)
+    if (date.toDateString() !== next.toDateString() && date.toDateString() !== last.toDateString()) {
       habbit.prevPeak = habbit.peak
       return 0
     }
@@ -20,8 +17,15 @@ function Habbit({habbit, del, set}) {
   const [days, setDays] = useState(habbit.days)
   
   const toggle = useRef()
+  const show = useRef()
   const toggleDisplay = () => {
-    toggle.current.style.display = toggle.current.style.display === "flex" ? "none" : "flex" 
+    if (toggle.current.style.display === "flex") {
+      toggle.current.style.display = "none"
+      show.current.innerHTML = "show more"
+    } else {
+      toggle.current.style.display = "flex"
+      show.current.innerHTML = "show less"
+    }
   }
 
   const plus = (event) => {
@@ -38,10 +42,9 @@ function Habbit({habbit, del, set}) {
   }
 
   const minus = (event) => {
-    console.log("clicked")
+    event.stopPropagation()
     var last = new Date(days.slice(-1))
     if (date.toDateString() !== last.toDateString()) { 
-      console.log(date.toDateString() + " " + last.toDateString())
       return 
     }
     if (count !== 0 && window.confirm("Reduce streak?")) {
@@ -53,7 +56,6 @@ function Habbit({habbit, del, set}) {
       })
       setCount(x => x - 1)
     }
-    event.stopPropagation()
   }
 
   const deleted = e => {
@@ -68,8 +70,8 @@ function Habbit({habbit, del, set}) {
   }, [count, set])
   
   return (
-    <div className='form-wrapper' onClick={toggleDisplay} style={{'--scheme' : habbit.color}}>
-      <u>{habbit.name}</u>
+    <div className='form-wrapper' style={{'--scheme' : habbit.color}}>
+      {habbit.name}
       <span>
         <PlusCircleFilled onClick={plus} /> &nbsp;&nbsp;
         {count} <FireOutlined /> &nbsp;&nbsp;
@@ -77,15 +79,17 @@ function Habbit({habbit, del, set}) {
       </span>
       <div ref={toggle} id='open'>
         <Calendar theme={habbit.color} dates={days} />
-        <div style={{padding:'0 5%', alignSelf:'center'}}>
-          Created on : {new Date(habbit.date).toDateString()} <br /><br />
-          Longest streak : {habbit.peak} days
+        <div id='details'>
+          <div className="detail">Created on : {new Date(habbit.date).toDateString()}</div>
+          <div className="detail">Longest streak : {habbit.peak} days</div>
         </div>
         <div id='delete' title='Delete' onClick={deleted}>
           <span style={{marginRight:'2px'}}> Remove </span>
           <DeleteOutlined />
         </div>
       </div>
+      <div id="show" ref={show} onClick={toggleDisplay}>show more</div>
+
     </div>
   )
 }
